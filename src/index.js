@@ -1,19 +1,19 @@
 const send = require("crystalize-response-send").send;
 
-const json = function (res, object) {
+const sendJson = function (res, object) {
     res.setHeader("Content-Type", "application/json");
-    return send(res, JSON.stringify(object));
+    send(res, JSON.stringify(object));
 };
 
 module.exports = {
-    name: "crystalize-respond-json",
+    name: "crystalize-respond-send-json",
     respondsTo: "then",
     callback: (req, res) => Object.assign(res, {
-        json: function (object) {
-            return json(res, object);
+        sendJson: function (object) {
+            return sendJson(res, object);
         },
     }),
 
-    json,
+    sendJson,
 };
 
